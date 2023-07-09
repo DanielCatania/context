@@ -1,11 +1,16 @@
-import React from "react";
-import Link from "next/link";
+import React, { useContext } from "react";
+import AppContext from "@/AppContext/";
+import Header from "@/components/header";
 
 export default function AboutScreen() {
+  const { languageContext } = useContext(AppContext);
+  const { aboutPage } = languageContext.state.language;
+
   return (
     <>
-      <h1>About</h1>
-      <Link href="/">Home</Link>
+      <Header />
+      <h1>{aboutPage.title}</h1>
+      <p>{aboutPage.description}</p>
     </>
   );
 }

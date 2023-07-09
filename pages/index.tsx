@@ -1,12 +1,16 @@
-import React from "react";
-import Link from "next/link";
+import React, { useContext } from "react";
+import AppContext from "@/AppContext/";
+import Header from "@/components/header";
 
 export default function HomeScreen() {
+  const { languageContext } = useContext(AppContext);
+  const { homePage } = languageContext.state.language;
+
   return (
     <>
-      <h1>Home</h1>
-      <Link href="/about">About</Link>
-      <Link href="/contact">Contact</Link>
+      <Header />
+      <h1>{homePage.title}</h1>
+      <p>{homePage.description}</p>
     </>
   );
 }
