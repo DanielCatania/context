@@ -13,6 +13,8 @@ export type Language = {
   contactPage: ScreenLanguage;
 };
 
+export type Languages = "en" | "pt-br" | "es";
+
 export default interface ILanguagesObject {
   en: Language;
   "pt-br": Language;
