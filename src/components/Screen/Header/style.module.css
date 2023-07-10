@@ -32,3 +32,8 @@
   text-transform: uppercase;
   padding: 5px;
 }
+
+.theme-button {
+  border: none;
+  background-color: transparent;
+}

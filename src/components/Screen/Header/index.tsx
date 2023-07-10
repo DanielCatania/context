@@ -6,9 +6,12 @@ import { Languages } from "@/language/type";
 import style from "./style.module.css";
 
 export default function Header() {
-  const { languageContext } = useContext(AppContext);
-  const { setLanguageSelected, state } = languageContext;
-  const { language, languageSelected } = state;
+  const { languageContext, themeContext } = useContext(AppContext);
+  const { state: themeState, setThemeSelected } = themeContext;
+  const { themeSelected } = themeState;
+
+  const { setLanguageSelected, state: languageState } = languageContext;
+  const { language, languageSelected } = languageState;
   const { header } = language;
 
   const languageOptions: Languages[] = ["pt-br", "en", "es"];
@@ -40,6 +43,20 @@ export default function Header() {
             </option>
           ))}
         </select>
+
+        <button
+          onClick={() =>
+            setThemeSelected(themeSelected === "light" ? "dark" : "light")
+          }
+          className={style["theme-button"]}
+        >
+          <Image
+            src={`/img/${themeSelected}.png`}
+            alt={themeSelected}
+            width={30}
+            height={30}
+          />
+        </button>
       </nav>
     </header>
   );

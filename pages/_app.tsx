@@ -8,6 +8,7 @@ import "@/style/global.css";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const [languageSelected, setLanguageSelected] = useState<Languages>("pt-br");
+  const [themeSelected, setThemeSelected] = useState<"dark" | "light">("light");
 
   return (
     <AppContext.Provider
@@ -18,6 +19,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             languageSelected,
           },
           setLanguageSelected,
+        },
+        themeContext: {
+          state: {
+            themeSelected,
+          },
+          setThemeSelected,
         },
       }}
     >
