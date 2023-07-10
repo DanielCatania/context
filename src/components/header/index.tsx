@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import AppContext from "@/AppContext";
 import { Languages } from "@/language/type";
+import style from "./style.module.css";
 
 export default function Header() {
   const { languageContext } = useContext(AppContext);
@@ -13,15 +14,22 @@ export default function Header() {
   const languageOptions: Languages[] = ["pt-br", "en", "es"];
 
   return (
-    <header>
-      <Link href="/">
+    <header className={style["header"]}>
+      <Link href="/" className={`${style["logo"]} ${style["link"]}`}>
         <Image src="/img/react.png" alt="React" width={70} height={60} />
         <span>React Context API</span>
       </Link>
-      <div>
-        <Link href="/about">{header.aboutLink}</Link>
-        <Link href="/contact">{header.contactLink}</Link>
-        <select onChange={(e) => setLanguageSelected(e.target.value)}>
+      <nav className={style["nav"]}>
+        <Link href="/about" className={style["link"]}>
+          {header.aboutLink}
+        </Link>
+        <Link href="/contact" className={style["link"]}>
+          {header.contactLink}
+        </Link>
+        <select
+          className={style["language-menu"]}
+          onChange={(e) => setLanguageSelected(e.target.value)}
+        >
           {languageOptions.map((languageOption) => (
             <option
               value={languageOption}
@@ -32,7 +40,7 @@ export default function Header() {
             </option>
           ))}
         </select>
-      </div>
+      </nav>
     </header>
   );
 }
